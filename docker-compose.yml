@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - /app/node_modules
+      - .:/usr/src/client:rw,cached
+    ports:
+      - "80:3000"
