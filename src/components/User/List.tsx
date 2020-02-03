@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { SET_SELECTED_USER, UsersContext } from '../../contexts/UsersContext';
-import { IGithubUser } from '../../api/github';
+import { SET_SELECTED_USER, UsersContext } from '../../contexts';
+import { IGithubUser } from '../../api/GithubAPI';
 
 export const List: React.FC = () => {
     const { dispatch, users } = useContext(UsersContext);

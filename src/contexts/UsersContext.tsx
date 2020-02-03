@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react';
-import { IGithubUser, IGithubUsers } from '../api/github';
+import { IGithubUser, IGithubUsers } from '../api/GithubAPI';
 
 export const SET_USERS = 'SET_USERS';
 export const SET_SELECTED_USER = 'SET_SELECTED_USER';

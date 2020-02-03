@@ -1,19 +1,17 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { GithubAPI } from '../../api/github';
+import React, { useContext, useEffect, useState } from 'react';
+import { GithubAPI } from '../../api';
 import { AxiosResponse } from 'axios';
-import { SET_SELECTED_USER, SET_USERS, UsersContext } from '../../contexts/UsersContext';
+import { SET_SELECTED_USER, SET_USERS, UsersContext } from '../../contexts';
 import { useDebounce } from '../../hooks';
 
 export const Search: React.FC = () => {
-    const [value, setValue] = useState('');
+    const [ value, setValue ] = useState('');
     const { dispatch } = useContext(UsersContext);
-    useCallback(() => {}, [value]);
     const debounced = useDebounce(value, 500);
-
 
     useEffect(() => {
         if (debounced) {
-            new GithubAPI().getUsers(value).then(({ data }: AxiosResponse) => {
+            new GithubAPI().getUsers(value).then(({data}: AxiosResponse) => {
                 dispatch({
                     payload: data,
                     type: SET_USERS,
@@ -26,12 +24,12 @@ export const Search: React.FC = () => {
         } else {
             if ('' !== debounced) {
                 dispatch({
-                    payload: { items: [] },
+                    payload: {items: []},
                     type: SET_USERS,
                 });
             }
         }
-    }, [debounced]);
+    }, [ debounced ]);
 
     return (
         <div className="form-group">

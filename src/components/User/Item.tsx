@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { UsersContext } from '../../contexts/UsersContext';
+import { UsersContext } from '../../contexts';
 
 export const Item: React.FC = () => {
     const { user } = useContext(UsersContext);
@@ -9,6 +9,6 @@ export const Item: React.FC = () => {
     }
 
     return (
-        <img src={user.avatar_url} />
+        <img src={user.avatar_url} alt={user.avatar_url} />
     )
 };
